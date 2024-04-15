@@ -15,7 +15,7 @@ describe("CnpjCpfInput", () => {
   test("renders CNPJ", async () => {
     render(<CnpjCpfInput />);
     const inputElement = screen.getByRole("textbox");
-    await userEvent.type(inputElement, "96051695000100");
+    await userEvent.type(inputElement, "96051695000100", { initialSelectionStart: 0 });
 
     await waitFor(()=> expect(inputElement).toHaveValue("96.051.695/0001-00"));
   });
@@ -23,8 +23,8 @@ describe("CnpjCpfInput", () => {
   test("renders CPF", async () => {
     render(<CnpjCpfInput />);
     const inputElement = screen.getByRole("textbox");
-    await userEvent.type(inputElement, "78556384072");
+    await userEvent.type(inputElement, "78556384072", { initialSelectionStart: 0 });
     
-    await waitFor(()=> expect(inputElement).toHaveValue("123.456.789-00"));
+    await waitFor(()=> expect(inputElement).toHaveValue("785.563.840-72"));
   });
 });
